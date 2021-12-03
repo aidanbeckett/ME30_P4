@@ -8,6 +8,8 @@ GPIO.setwarnings(False)
 #define actuators GPIOs
 in1 = 8 
 in2 = 10
+in3 = 15
+in4 = 16
 enA = 12
 
 GPIO.setmode(GPIO.BOARD)
