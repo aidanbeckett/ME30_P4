@@ -21,7 +21,7 @@ GPIO.setup(rightBckwd, GPIO.OUT)
 	
 @app.route("/")
 def index():
-	GPIO.output(leftFwd, GPIO.LOW)
+  GPIO.output(leftFwd, GPIO.LOW)
   GPIO.output(leftBckwd, GPIO.LOW)
   GPIO.output(rightFwd, GPIO.LOW)
   GPIO.output(rightBckwd, GPIO.LOW)
