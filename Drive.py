@@ -8,10 +8,10 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #define actuators GPIOs
-leftFwd = 13
-leftBckwd = 19
-rightFwd= 26
-rightBckwd = 38
+leftFwd = 7
+leftBckwd = 8
+rightFwd= 10
+rightBckwd = 12
 
 # Define pins as output
 GPIO.setup(leftFwd, GPIO.OUT)   
