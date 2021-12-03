@@ -6,23 +6,23 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #define actuators GPIOs
-leftFwd = 7
-leftBckwd = 8
-rightFwd= 10
-rightBckwd = 12
+in1 = 8 
+in2 = 10
+enA = 12
 
-# Define pins as output
-GPIO.setup(leftFwd, GPIO.OUT)   
-GPIO.setup(leftBckwd, GPIO.OUT) 
-GPIO.setup(rightFwd, GPIO.OUT) 
-GPIO.setup(rightBckwd, GPIO.OUT) 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(enA,GPIO.OUT) 
 	
 @app.route("/")
 def index():
-  GPIO.output(leftFwd, GPIO.LOW)
-  GPIO.output(leftBckwd, GPIO.LOW)
-  GPIO.output(rightFwd, GPIO.LOW)
-  GPIO.output(rightBckwd, GPIO.LOW)
+  #stop
+  GPIO.output(in1,GPIO.LOW)
+  GPIO.output(in2,GPIO.LOW)
+  GPIO.output(in3,GPIO.LOW)
+  GPIO.output(in4,GPIO.LOW)
+  print("stop")
 #	templateData = {
 #	 	'button'  : buttonSts,
 #      		'senPIR'  : senPIRSts,
@@ -37,25 +37,25 @@ return render_template('index.html')
 def action(action):
    
   if action == "left":
-    GPIO.output(leftFwd, GPIO.HIGH)
-    GPIO.output(leftBckwd, GPIO.LOW)
-    GPIO.output(rightFwd, GPIO.LOW)
-    GPIO.output(rightBckwd, GPIO.HIGH)
+    GPIO.output(in1, GPIO.HIGH)
+    GPIO.output(in2, GPIO.LOW)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
   if action == "right":
-    GPIO.output(leftFwd, GPIO.LOW)
-    GPIO.output(leftBckwd, GPIO.HIGH)
-    GPIO.output(rightFwd, GPIO.HIGH)
-    GPIO.output(rightBckwd, GPIO.LOW)
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.HIGH)
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
   if action == "forward":
-    GPIO.output(leftFwd, GPIO.HIGH)
-    GPIO.output(leftBckwd, GPIO.LOW)
-    GPIO.output(rightFwd, GPIO.HIGH)
-    GPIO.output(rightBckwd, GPIO.LOW)
+    GPIO.output(in1, GPIO.HIGH)
+    GPIO.output(in2, GPIO.LOW)
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
   if action == "backwards":
-    GPIO.output(leftFwd, GPIO.LOW)
-    GPIO.output(leftBckwd, GPIO.HIGH)
-    GPIO.output(rightFwd, GPIO.LOW)
-    GPIO.output(rightBckwd, GPIO.HIGH) 
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.HIGH)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH) 
    
 #	templateData = {
 #	      	'button'  : buttonSts,
@@ -68,4 +68,4 @@ def action(action):
 return render_trmplate('index.html')
 
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80, debug=True)
+   app.run(host='10.245.86.142', port=80, debug=True)
