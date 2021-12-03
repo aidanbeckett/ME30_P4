@@ -26,7 +26,7 @@ def index():
   GPIO.output(rightFwd, GPIO.LOW)
   GPIO.output(rightBckwd, GPIO.LOW)
 #	templateData = {
-#	 	      'button'  : buttonSts,
+#	 	'button'  : buttonSts,
 #      		'senPIR'  : senPIRSts,
 #      		'ledRed'  : ledRedSts,
 #      		'ledYlw'  : ledYlwSts,
@@ -38,23 +38,23 @@ return render_template('index.html')
 @app.route("/<action>")
 def action(action):
    
-	if action == "left":
-		GPIO.output(leftFwd, GPIO.HIGH)
+  if action == "left":
+    GPIO.output(leftFwd, GPIO.HIGH)
     GPIO.output(leftBckwd, GPIO.LOW)
     GPIO.output(rightFwd, GPIO.LOW)
     GPIO.output(rightBckwd, GPIO.HIGH)
-	if action == "right":
-		GPIO.output(leftFwd, GPIO.LOW)
+  if action == "right":
+    GPIO.output(leftFwd, GPIO.LOW)
     GPIO.output(leftBckwd, GPIO.HIGH)
     GPIO.output(rightFwd, GPIO.HIGH)
     GPIO.output(rightBckwd, GPIO.LOW)
   if action == "forward":
-		GPIO.output(leftFwd, GPIO.HIGH)
+    GPIO.output(leftFwd, GPIO.HIGH)
     GPIO.output(leftBckwd, GPIO.LOW)
     GPIO.output(rightFwd, GPIO.HIGH)
     GPIO.output(rightBckwd, GPIO.LOW)
   if action == "backwards":
-		GPIO.output(leftFwd, GPIO.LOW)
+    GPIO.output(leftFwd, GPIO.LOW)
     GPIO.output(leftBckwd, GPIO.HIGH)
     GPIO.output(rightFwd, GPIO.LOW)
     GPIO.output(rightBckwd, GPIO.HIGH) 
