@@ -22,6 +22,10 @@ GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
 GPIO.setup(in3,GPIO.OUT)
 GPIO.setup(in4,GPIO.OUT)
+GPIO.setup(step1,GPIO.OUT)
+GPIO.setup(step2,GPIO.OUT)
+GPIO.setup(step3,GPIO.OUT)
+GPIO.setup(step4,GPIO.OUT)
 GPIO.setup(enA,GPIO.OUT) 
 
 GPIO.output(enA,GPIO.HIGH)
@@ -33,25 +37,23 @@ motorState = "down"
 
 def setStep(w1, w2, w3, w4):
   GPIO.output(step1, w1)
-
-#yoooooo
   GPIO.output(step2, w2)
   GPIO.output(step3, w3)
   GPIO.output(step4, w4)
 
 def makeStepsUp(steps):
   for i in range(steps):
-    setStep(1,0,1,0)
+    setStep(GPIO.HIGH,GPIO.LOW,GPIO.HIGH,GPIO.LOW)
     time.sleep(delay)
-    setStep(0,1,1,0)
+    setStep(GPIO.LOW,GPIO.HIGH,GPIO.HIGH,GPIO.LOW)
     time.sleep(delay)
-    setStep(0,1,0,1)
+    setStep(GPIO.LOW,GPIO.HIGH,GPIO.LOW,GPIO.HIGH)
     time.sleep(delay)
-    setStep(1,0,0,1)
+    setStep(GPIO.HIGH,GPIO.LOW,GPIO.LOW,GPIO.HIGH)
     time.sleep(delay)
 
 def makeStepsDown(steps):
-  for i in range(steps)
+  for i in range(steps):
     setStep(1,0,0,1)
     time.sleep(delay)
     setStep(0,1,0,1)
@@ -82,7 +84,7 @@ def index():
 	
 @app.route("/<action>")
 def action(action):
-   
+  motorState= ""
   if action == "left":
     print("left")
     GPIO.output(in1, GPIO.HIGH)
@@ -108,6 +110,7 @@ def action(action):
     GPIO.output(in3, GPIO.HIGH)
     GPIO.output(in4, GPIO.HIGH) 
   if action == "down":
+    print(motorState)
     if motorState == "up":
       makeStepsDown(200)
     if motorState == "med":#Move the motor to the up postion based on its current location
