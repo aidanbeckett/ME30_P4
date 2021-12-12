@@ -33,6 +33,8 @@ motorState = "down"
 
 def setStep(w1, w2, w3, w4):
   GPIO.output(step1, w1)
+
+#yoooooo
   GPIO.output(step2, w2)
   GPIO.output(step3, w3)
   GPIO.output(step4, w4)
