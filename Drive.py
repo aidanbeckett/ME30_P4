@@ -85,14 +85,14 @@ def index():
 @app.route("/<action>")
 def action(action):
   motorState= ""
-  if action == "left":
-    print("left")
+  if action == "right":
+    print("right")
     GPIO.output(in1, GPIO.HIGH)
     GPIO.output(in2, GPIO.LOW)
     GPIO.output(in3, GPIO.LOW)
     GPIO.output(in4, GPIO.HIGH)
-  if action == "right":
-    print("right")
+  if action == "left":
+    print("left")
     GPIO.output(in1, GPIO.LOW)
     GPIO.output(in2, GPIO.HIGH)
     GPIO.output(in3, GPIO.HIGH)
